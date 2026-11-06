@@ -1,0 +1,19 @@
+{
+  "_comment": "Copy this file into your project as content-rules.json and edit it. Patterns are JavaScript regular expressions. allowIn lists page paths (regexes) where a fail pattern is accepted. Add the banned words and forbidden claims of your own sources.",
+  "fail": [
+    { "pattern": "[\u2014\u2013]", "why": "em or en dash" },
+    { "pattern": "\\b(world[- ]class|best[- ]in[- ]class|cutting[- ]edge|guarantee(s|d)?)\\b", "flags": "i", "why": "unprovable superlative or guarantee" },
+    { "pattern": "\\b(in|to) production\\b", "flags": "i", "why": "status claim: allow it only on the pages where it is true", "allowIn": ["^/replace-with-the-page-where-it-is-true"] },
+    { "pattern": "\\+\\d{1,3}([ .-]\\(?\\d{1,4}\\)?){3,5}\\b", "why": "international phone number on a public page (add your national format)", "allowIn": ["^/(legal|imprint|privacy)"] },
+    { "pattern": "\\b(TODO|TBD|FIXME)\\b", "why": "placeholder left in the copy" },
+    { "pattern": "lorem ipsum", "flags": "i", "why": "placeholder left in the copy" }
+  ],
+  "warn": [
+    { "pattern": "\\b(delv(e|es|ed|ing)|seamless(ly)?|leverag(e|es|ed|ing)|unleash(es|ed|ing)?|elevat(e|es|ed|ing)|empower(s|ed|ing)?|journeys?|tapestry|game[- ]changers?|robust|holistic)\\b", "flags": "i", "why": "AI-tell vocabulary" },
+    { "pattern": "\\bnot (just|only|merely) [^.;:!?]{1,60}?,? but\\b", "flags": "i", "why": "\"not X, but Y\" antithesis" },
+    { "pattern": "\\b(honestly|truly|genuinely)\\b", "flags": "i", "why": "sincerity marker" },
+    { "pattern": "\\b(moreover|furthermore|in conclusion|it['\u2019]?s worth noting)\\b", "flags": "i", "why": "essay connector" },
+    { "pattern": "\\b(the result|the secret|the catch|the answer|the truth)\\s*:", "flags": "i", "why": "reveal colon" }
+  ],
+  "maxWarnings": 3
+}
